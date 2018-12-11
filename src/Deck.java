@@ -29,6 +29,14 @@ public class Deck {
     {
         return undealt.size();
     }
+    public Card getUndealtCard(int idx)
+    {
+        return undealt.get(idx);
+    }
+    public Card getDealtCard(int idx)
+    {
+        return dealt.get(idx);
+    }
     public Card deal()
     {
         if(undealt.size() <0)
@@ -42,7 +50,16 @@ public class Deck {
     }
     public void shuffle()
     {
-
+        for(Card x : dealt)
+        {
+            undealt.add(x);
+        }
+        int idxOne = (int) Math.random() * 51 + 1;
+        int idxTwo = (int) Math.random() * 51 + 1;
+        Card temp = undealt.get(idxOne);
+        undealt.set(idxOne,undealt.get(idxTwo));
+        undealt.set(idxTwo,temp);
     }
+
 
 }
