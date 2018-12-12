@@ -7,15 +7,13 @@ public class Deck {
     public Deck(String[] rankList, String[] suitList, int[] pointValList)
     {
         undealt = new ArrayList<Card>();
-        for(int a = 0; a<rankList.length;a++)
+        dealt = new ArrayList<Card>();
+        for(int a = 0; a<suitList.length;a++)
         {
-            for(int b = 0; b<suitList.length;b++)
+            for(int b = 0; b<rankList.length;b++)
             {
-                for(int c = 0; c<pointValList.length;c++)
-                {
-                    Card newCard = new Card(rankList[a],suitList[b],pointValList[c]);
+                    Card newCard = new Card(rankList[b],suitList[a],pointValList[b]);
                     undealt.add(newCard);
-                }
             }
         }
     }
@@ -45,20 +43,32 @@ public class Deck {
         {
             Card chosenCard = undealt.get(0);
             undealt.remove(0);
+            System.out.println(dealt.size());
+            System.out.println(undealt.size());
             return chosenCard;
         }
     }
     public void shuffle()
     {
-        for(Card x : dealt)
+        int count =0;
+        if(dealt.size()>0)
         {
-            undealt.add(x);
+            while(count<51)
+            {
+                undealt.add(dealt.get(count));
+                dealt.remove(count);
+                count++;
+            }
         }
-        int idxOne = (int) Math.random() * 51 + 1;
-        int idxTwo = (int) Math.random() * 51 + 1;
-        Card temp = undealt.get(idxOne);
-        undealt.set(idxOne,undealt.get(idxTwo));
-        undealt.set(idxTwo,temp);
+
+        for(int x = 0; x< undealt.size();x++)
+        {
+            int idx = (int) Math.random() * 51 + 1;
+            Card temp = undealt.get(x);
+            undealt.set(x,undealt.get(idx));
+            undealt.set(idx,temp);
+        }
+
     }
 
 
