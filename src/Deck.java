@@ -21,7 +21,7 @@ public class Deck {
     {
         if(undealt.size() == 0)
             return true;
-        return true;
+        return false;
     }
     public int size()
     {
@@ -37,33 +37,34 @@ public class Deck {
     }
     public Card deal()
     {
-        if(undealt.size() <0)
+        if(undealt.size() <0) {
             return null;
+        }
         else
         {
             Card chosenCard = undealt.get(0);
+            dealt.add(chosenCard);
             undealt.remove(0);
-            System.out.println(dealt.size());
-            System.out.println(undealt.size());
             return chosenCard;
         }
+
     }
     public void shuffle()
     {
         int count =0;
         if(dealt.size()>0)
         {
-            while(count<51)
+            while(count<52)
             {
-                undealt.add(dealt.get(count));
-                dealt.remove(count);
+                undealt.add(dealt.get(0));
+                dealt.remove(0);
                 count++;
             }
         }
 
         for(int x = 0; x< undealt.size();x++)
         {
-            int idx = (int) Math.random() * 51 + 1;
+            int idx = (int) (Math.random() * 51) + 1;
             Card temp = undealt.get(x);
             undealt.set(x,undealt.get(idx));
             undealt.set(idx,temp);
