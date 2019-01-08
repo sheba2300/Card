@@ -1,3 +1,5 @@
+/**Mir Shahiduzzaman
+ * Sheba Sow*/
 public class Card {
     private String rank, suit;
     private int pointVal;

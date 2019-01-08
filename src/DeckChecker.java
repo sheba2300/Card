@@ -1,3 +1,5 @@
+/**Mir Shahiduzzaman
+ * Sheba Sow*/
 public class DeckChecker {
     public static void main(String args[])
     {
